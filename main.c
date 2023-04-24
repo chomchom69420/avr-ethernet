@@ -80,6 +80,8 @@ int changeVal;
 void http_parse_init();
 void http_parse_update();
 
+unsigned char buf[200];
+
 int main(void)
 {
 	/* Initialize the hardware devices
@@ -102,7 +104,7 @@ int main(void)
      rtc_init();
      spi_init();
      temp_init();
-     W51_init();
+     W5x_init();
      tempfsm_init();
 
      //Initialize http parse fsm
@@ -111,18 +113,18 @@ int main(void)
     /* sign the assignment
     * Asurite is the first part of your asu email (before the @asu.edu
     */
-    signature_set("Manish","Mani","asurite");
+    signature_set("Manish","Mani","mmysorer");
 
     /* configure the W51xx ethernet controller prior to DHCP */
     unsigned char blank_addr[] = {0,0,0,0};
-    W51_config(vpd.mac_address, blank_addr, blank_addr, blank_addr);
+    W5x_config(vpd.mac_address, blank_addr, blank_addr, blank_addr);
 
     /* loop until a dhcp address has been gotten */
     while (!dhcp_start(vpd.mac_address, 60000UL, 4000UL)) {}
     uart_writestr("local ip: ");uart_writeip(dhcp_getLocalIp());
 
     /* configure the MAC, TCP, subnet and gateway addresses for the Ethernet controller*/
-    W51_config(vpd.mac_address, dhcp_getLocalIp(), dhcp_getGatewayIp(), dhcp_getSubnetMask());
+    W5x_config(vpd.mac_address, dhcp_getLocalIp(), dhcp_getGatewayIp(), dhcp_getSubnetMask());
 
 	/* add a log record for EVENT_TIMESET prior to synchronizing with network time */
 	log_add_record(EVENT_TIMESET);
@@ -187,16 +189,26 @@ int main(void)
         }
 
         /* if there is input to process */
-        else if(socket_received_line(SERVER_SOCKET))
+        else if(socket_received_line(SERVER_SOCKET) || parse_state == PROCESS || parse_state == ERR)
         {
             /* parse and process any pending commands */
+
+            //Read the HTTP request format
+
+            /*
+            if(socket_recv(SERVER_SOCKET, buf, 200))
+            {
+                uart_writestr((char*)buf);
+                uart_writestr("\r\n");
+                socket_flush_line(SERVER_SOCKET);
+            }
+            */
+
+
             http_parse_update();
         }
         /* otherwise... */
         else {
-            //Close socket
-            socket_disconnect(SERVER_SOCKET);
-
           /* update any pending log write backs */
             if (!eeprom_isbusy()) log_update();
           /* update any pending config write backs */
@@ -218,9 +230,24 @@ void http_parse_update()
     switch(parse_state)
     {
     case REQ_LINE:
-        if(socket_recv_compare(SERVER_SOCKET, "GET "))           reqMode=0;
-        else if(socket_recv_compare(SERVER_SOCKET, "PUT "))      reqMode=1;
-        else if(socket_recv_compare(SERVER_SOCKET, "DELETE "))   reqMode=2;
+
+        uart_writestr("In request line section...\r\n");
+
+        if(socket_recv_compare(SERVER_SOCKET, "GET "))
+        {
+            reqMode=0;
+            uart_writestr("GET mode\r\n");
+        }
+        else if(socket_recv_compare(SERVER_SOCKET, "PUT "))
+        {
+            reqMode=1;
+            uart_writestr("PUT mode\r\n");
+        }
+        else if(socket_recv_compare(SERVER_SOCKET, "DELETE "))
+        {
+            reqMode=2;
+            uart_writestr("DELETE mode\r\n");
+        }
         else
         {
             reqMode=-1;
@@ -228,16 +255,9 @@ void http_parse_update()
             break;
         }
 
-        //Check proper IP addresses and port; else flush
-        if(!socket_recv_compare(SERVER_SOCKET, "192.1.168.1.100:8080"))
-        {
-            //IP address and port are not proper
-            parse_state = ERR;
-            break;
-        }
-
         if(!socket_recv_compare(SERVER_SOCKET, "/device"))
         {
+            uart_writestr("/device not present\r\n");
             parse_state = ERR;
             break;
         }
@@ -246,8 +266,9 @@ void http_parse_update()
         if(socket_recv_compare(SERVER_SOCKET, " ") || socket_recv_compare(SERVER_SOCKET, "?reset="))
         {
             //if mode is GET or PUT and resource is /device then cool else raise error
-            if(reqMode!=0 || reqMode!=1)
+            if(reqMode!=0 && reqMode!=1)
             {
+                uart_writestr("Request mode not matching resource\r\n");
                 parse_state = ERR;
                 break;
             }
@@ -257,16 +278,18 @@ void http_parse_update()
         {
             if(reqMode!=1)
             {
+                uart_writestr("Request mode not matching resource\r\n");
                 //Error
                 parse_state = ERR;
                 break;
             }
             resMode=1;
         }
-        else if(socket_recv_compare(SERVER_SOCKET, "/log "))
+        else if(socket_recv_compare(SERVER_SOCKET, "/log"))
         {
             if(reqMode!=2)
             {
+                uart_writestr("Request mode not matching resource\r\n");
                 //Error
                 parse_state = ERR;
                 break;
@@ -275,6 +298,7 @@ void http_parse_update()
         }
         else
         {
+            uart_writestr("Invalid request mode\r\n");
             resMode=-1;
             parse_state = ERR;
             break;
@@ -305,28 +329,50 @@ void http_parse_update()
                 parse_state = ERR;
                 break;
             }
+
+            //store new value
+            if(!socket_recv_int(SERVER_SOCKET, &changeVal))
+            {
+                changeMode=-1;
+                parse_state = ERR;
+                break;
+            }
         }
 
-        //store new value
-        if(!socket_recv_int(SERVER_SOCKET, &changeVal))
+        if(reqMode==0)
         {
-            changeMode=-1;
+            //Check proper HTTP version
+            if(!socket_recv_compare(SERVER_SOCKET, "HTTP/1.1\r\n"))
+            {
+                uart_writestr("HTTP version not 1.1\r\n");
+                parse_state = ERR;
+                break;
+            }
+        }
+        else
+        {
+            //Check proper HTTP version
+            if(!socket_recv_compare(SERVER_SOCKET, " HTTP/1.1\r\n"))
+            {
+                uart_writestr("HTTP version not 1.1\r\n");
+                parse_state = ERR;
+                break;
+            }
+        }
+
+
+
+
+        //Check proper IP addresses and port
+        if(!socket_recv_compare(SERVER_SOCKET, "Host: 192.1.168.1.100:8080\r\n") && !socket_recv_compare(SERVER_SOCKET, "Host: 127.0.0.100:8080\r\n"))
+        {
+            //IP address and port are not proper
+            uart_writestr("IP address not matching\r\n");
             parse_state = ERR;
             break;
         }
 
-
-        //Check proper HTTP version
-
-        /*
-        if(!socket_recv_compare(SERVER_SOCKET, " HTTP/1.1\r\n"))
-        {
-            parse_state = ERR;
-            break;
-        }
-        */
-
-        socket_flush_line(SERVER_SOCKET);
+        //socket_flush_line(SERVER_SOCKET);
 
         parse_state = HEADER;
 
@@ -336,7 +382,13 @@ void http_parse_update()
         if(socket_is_blank_line(SERVER_SOCKET))
         {
             //Next line is blank line -- header section is ended
-            parse_state = BODY;
+
+            //Flush the blank line
+            socket_flush_line(SERVER_SOCKET);
+
+            //Move to body section
+            uart_writestr("Moving to process section...\r\n");
+            parse_state = PROCESS;
             break;
         }
         else
@@ -352,7 +404,14 @@ void http_parse_update()
         if(socket_is_blank_line(SERVER_SOCKET))
         {
             //Body has ended, move to processing ignoring the body
+
+            //Flush the blank line
+            socket_flush_line(SERVER_SOCKET);
+
+            //Move to process
             parse_state = PROCESS;
+            uart_writestr("Moving to process section...\r\n");
+            break;
         }
         else
         {
@@ -360,6 +419,7 @@ void http_parse_update()
             socket_flush_line(SERVER_SOCKET);
             //Stay in body
             parse_state = BODY;
+            break;
         }
 
         break;
@@ -373,16 +433,25 @@ void http_parse_update()
         socket_writestr(SERVER_SOCKET, "Connection: close\r\n");
         socket_writestr(SERVER_SOCKET, "\r\n");
 
-    case SEND_ERR:
+        //Close socket
+        socket_disconnect(SERVER_SOCKET);
+
+        uart_writestr("In request line section...\r\n");
+        parse_state = REQ_LINE;
+        break;
 
     case PROCESS:
 
         //Need to process and send apt response
 
+        uart_writestr("Started executing process...\r\n");
+
         //Check request mode
         if(reqMode==0)
         {
             //Write out the device info as a JSON format
+
+            uart_writestr("Started sending response...\r\n");
 
             socket_writestr(SERVER_SOCKET, "HTTP/1.1 200 OK\r\n");
             socket_writestr(SERVER_SOCKET, "Content-Type: application/vnd.api+json\r\n");
@@ -397,26 +466,32 @@ void http_parse_update()
             socket_writechar(SERVER_SOCKET, '{');
 
             socket_writequotedstring(SERVER_SOCKET, "model");
+            socket_writechar(SERVER_SOCKET, ':');
             socket_writequotedstring(SERVER_SOCKET, vpd.model);
             socket_writechar(SERVER_SOCKET, ',');
 
             socket_writequotedstring(SERVER_SOCKET, "manufacturer");
+            socket_writechar(SERVER_SOCKET, ':');
             socket_writequotedstring(SERVER_SOCKET, vpd.manufacturer);
             socket_writechar(SERVER_SOCKET, ',');
 
             socket_writequotedstring(SERVER_SOCKET, "serial_number");
+            socket_writechar(SERVER_SOCKET, ':');
             socket_writequotedstring(SERVER_SOCKET, vpd.serial_number);
             socket_writechar(SERVER_SOCKET, ',');
 
             socket_writequotedstring(SERVER_SOCKET, "manufacture_date");
+            socket_writechar(SERVER_SOCKET, ':');
             socket_writedate(SERVER_SOCKET, vpd.manufacture_date);
             socket_writechar(SERVER_SOCKET, ',');
 
             socket_writequotedstring(SERVER_SOCKET, "mac_address");
+            socket_writechar(SERVER_SOCKET, ':');
             socket_write_macaddress(SERVER_SOCKET, vpd.mac_address);
             socket_writechar(SERVER_SOCKET, ',');
 
             socket_writequotedstring(SERVER_SOCKET, "country_code");
+            socket_writechar(SERVER_SOCKET, ':');
             socket_writequotedstring(SERVER_SOCKET, vpd.country_of_origin);
 
             socket_writechar(SERVER_SOCKET, '}');
@@ -486,7 +561,13 @@ void http_parse_update()
             socket_writechar(SERVER_SOCKET, '}');
 
             socket_writestr(SERVER_SOCKET, "\r\n");
+
+            uart_writestr("Ended sending response...\r\n");
+
+            //Close socket
+            socket_disconnect(SERVER_SOCKET);
         }
+
 
         else if (reqMode == 1 && resMode==1)
         {
@@ -505,7 +586,7 @@ void http_parse_update()
 
             if(changeMode==0)
             {
-                if(!update_tcrit_hi(changeVal))
+                if(update_tcrit_hi(changeVal))
                 {
                     parse_state = ERR;
                     break;
@@ -513,7 +594,7 @@ void http_parse_update()
             }
             else if(changeMode==1)
             {
-                if(!update_twarn_hi(changeVal))
+                if(update_twarn_hi(changeVal))
                 {
                     parse_state = ERR;
                     break;
@@ -521,7 +602,7 @@ void http_parse_update()
             }
             else if(changeMode==2)
             {
-                if(!update_twarn_lo(changeVal))
+                if(update_twarn_lo(changeVal))
                 {
                     parse_state = ERR;
                     break;
@@ -529,7 +610,7 @@ void http_parse_update()
             }
             else if(changeMode==3)
             {
-                if(!update_tcrit_lo(changeVal))
+                if(update_tcrit_lo(changeVal))
                 {
                     parse_state = ERR;
                     break;
@@ -543,6 +624,9 @@ void http_parse_update()
             socket_writestr(SERVER_SOCKET, "HTTP/1.1 200 OK\r\n");
             socket_writestr(SERVER_SOCKET, "Connection: close\r\n");
             socket_writestr(SERVER_SOCKET, "\r\n");
+
+            //Close socket
+            socket_disconnect(SERVER_SOCKET);
         }
 
         else if(reqMode == 1 && resMode==0)
@@ -550,6 +634,8 @@ void http_parse_update()
             //reset
             if(resetMode)
             {
+                //Close socket
+                socket_disconnect(SERVER_SOCKET);
                 wdt_force_restart();
             }
 
@@ -565,11 +651,14 @@ void http_parse_update()
             socket_writestr(SERVER_SOCKET, "HTTP/1.1 200 OK\r\n");
             socket_writestr(SERVER_SOCKET, "Connection: close\r\n");
             socket_writestr(SERVER_SOCKET, "\r\n");
+
+            //Close socket
+            socket_disconnect(SERVER_SOCKET);
         }
 
         parse_state = REQ_LINE;
 
-    case SEND_RES:
+        break;
 
     default:
         break;

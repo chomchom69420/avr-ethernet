@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1682330035 source:/home/sohamchakraborty/Desktop/Project 4/main.c
+	"config.h"
+	"delay.h"
+	"dhcp.h"
+	"led.h"
+	"log.h"
+	"rtc.h"
+	"spi.h"
+	"uart.h"
+	"vpd.h"
+	"temp.h"
+	"socket.h"
+	"alarm.h"
+	"wdt.h"
+	"tempfsm.h"
+	"eeprom.h"
+	"ntp.h"
+	"w51.h"
+	"signature.h"
+	"process_packet.h"
+
+1564432663 /home/sohamchakraborty/Desktop/Project 4/config.h
+
+1564432838 /home/sohamchakraborty/Desktop/Project 4/delay.h
+
+1524177000 /home/sohamchakraborty/Desktop/Project 4/dhcp.h
+
+1520446007 /home/sohamchakraborty/Desktop/Project 4/led.h
+
+1523113274 /home/sohamchakraborty/Desktop/Project 4/log.h
+
+1523480741 /home/sohamchakraborty/Desktop/Project 4/rtc.h
+
+1555443756 /home/sohamchakraborty/Desktop/Project 4/spi.h
+
+1524183663 /home/sohamchakraborty/Desktop/Project 4/uart.h
+
+1564433694 /home/sohamchakraborty/Desktop/Project 4/vpd.h
+
+1524183585 /home/sohamchakraborty/Desktop/Project 4/temp.h
+
+1524183371 /home/sohamchakraborty/Desktop/Project 4/socket.h
+
+1524177000 /home/sohamchakraborty/Desktop/Project 4/alarm.h
+
+1570754896 /home/sohamchakraborty/Desktop/Project 4/wdt.h
+
+1524183556 /home/sohamchakraborty/Desktop/Project 4/tempfsm.h
+
+1524179239 /home/sohamchakraborty/Desktop/Project 4/eeprom.h
+
+1524179957 /home/sohamchakraborty/Desktop/Project 4/ntp.h
+
+1682323710 /home/sohamchakraborty/Desktop/Project 4/w51.h
+
+1573501852 /home/sohamchakraborty/Desktop/Project 4/signature.h
+
+1570756072 /home/sohamchakraborty/Desktop/Project 4/process_packet.h
+
+1682268456 source:/home/sohamchakraborty/Desktop/Project 4/util.c
+	"util.h"
+	"string.h"
+	"process_packet.h"
+	"config.h"
+
+1524183940 /home/sohamchakraborty/Desktop/Project 4/util.h
+

@@ -17,11 +17,11 @@
 #define  W51_H
 
 /* initialize the W5100 Ethernet network controller */
-void W51_init(void);
+void W5x_init(void);
 
 /* configure the Ethernet contoller mac address, ip address, network gateway address,
 * and network subnet mask from the specified parameters.
 */
-unsigned char  W51_config(unsigned char*mac_addr, unsigned char *ip_addr, unsigned char *gtw_addr, unsigned char *sub_mask);
+unsigned char  W5x_config(unsigned char*mac_addr, unsigned char *ip_addr, unsigned char *gtw_addr, unsigned char *sub_mask);
 
 #endif
