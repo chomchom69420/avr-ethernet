@@ -75,6 +75,7 @@ Allocating common symbols
 Common symbol       size              file
 
 rxbuf               0x40              /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
+message_ip          0x4               obj/Debug/main.o
 write_busy          0x1               /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
 vpd                 0x37              /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
 writeaddr           0x2               /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
@@ -82,6 +83,7 @@ resMode             0x2               obj/Debug/main.o
 rtc_base            0x4               /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
 writesize           0x1               /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
 changeVal           0x2               obj/Debug/main.o
+local_ip            0x2               obj/Debug/main.o
 changeMode          0x2               obj/Debug/main.o
 parse_state         0x2               obj/Debug/main.o
 resetMode           0x2               obj/Debug/main.o
@@ -218,7 +220,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x52ea
+.text           0x0000000000000000     0x5460
  *(.vectors)
  .vectors       0x0000000000000000       0x68 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega328p.o
                 0x0000000000000000                __vectors
@@ -299,464 +301,464 @@ END GROUP
                 0x00000000000000b4                __vector_10
                 0x00000000000000b4                __vector_16
                 0x00000000000000b4                __vector_20
- .text          0x00000000000000b8      0xb1e obj/Debug/main.o
+ .text          0x00000000000000b8      0xc94 obj/Debug/main.o
                 0x00000000000000b8                main
-                0x0000000000000250                http_parse_init
-                0x0000000000000268                http_parse_update
- .text          0x0000000000000bd6      0x1b0 obj/Debug/util.o
-                0x0000000000000bd6                calc_checksum
-                0x0000000000000c58                update_tcrit_hi
-                0x0000000000000ca2                update_twarn_hi
-                0x0000000000000cf4                update_twarn_lo
-                0x0000000000000d46                update_tcrit_lo
- .text          0x0000000000000d86      0x18c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
-                0x0000000000000d86                alarm_init
-                0x0000000000000d88                alarm_send
- .text          0x0000000000000f12       0xf0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(config.o)
-                0x0000000000000f12                config_set_modified
-                0x0000000000000f1a                config_is_data_valid
-                0x0000000000000f5a                config_write_defaults
-                0x0000000000000f74                config_init
-                0x0000000000000faa                config_update
-                0x0000000000000fda                config_update_noisr
- .text          0x0000000000001002      0x19e /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(delay.o)
-                0x0000000000001002                __vector_14
-                0x00000000000010a4                delay_init
-                0x00000000000010c8                delay_get
-                0x00000000000010e8                delay_isdone
-                0x000000000000111a                delay_set
-                0x000000000000116e                millis
- .text          0x00000000000011a0      0xbfc /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
-                0x00000000000011a0                dhcp_getLocalIp
-                0x00000000000011a6                dhcp_getSubnetMask
-                0x00000000000011ac                dhcp_getGatewayIp
-                0x00000000000011b2                dhcp_getDhcpServerIp
-                0x00000000000011b8                dhcp_getDnsServerIp
-                0x00000000000011be                _ZN9DhcpClass16reset_DHCP_leaseEv
-                0x00000000000011ca                _ZN9DhcpClass12presend_DHCPEv
-                0x00000000000011cc                _ZN9DhcpClass17parseDHCPResponseEmRm
-                0x0000000000001602                _ZN9DhcpClass10getLocalIpEv
-                0x0000000000001606                _ZN9DhcpClass13getSubnetMaskEv
-                0x000000000000160a                _ZN9DhcpClass12getGatewayIpEv
-                0x000000000000160e                _ZN9DhcpClass15getDhcpServerIpEv
-                0x0000000000001612                _ZN9DhcpClass14getDnsServerIpEv
-                0x0000000000001616                _ZN9DhcpClass9printByteEPch
-                0x0000000000001640                _ZN9DhcpClass17send_DHCP_MESSAGEEhj
-                0x00000000000018bc                _ZN9DhcpClass18request_DHCP_leaseEv
-                0x0000000000001bb8                _ZN9DhcpClass13beginWithDHCPEPhmm
-                0x0000000000001c36                dhcp_start
-                0x0000000000001c5a                _ZN9DhcpClass10checkLeaseEv
-                0x0000000000001d94                dhcp_checkLease
- .text          0x0000000000001d9c      0x12c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
-                0x0000000000001d9c                eeprom_startwrite
-                0x0000000000001da2                __vector_22
-                0x0000000000001e2e                eeprom_writebuf
-                0x0000000000001e68                eeprom_writebuf_noisr
-                0x0000000000001e96                eeprom_readbuf
-                0x0000000000001ec0                eeprom_isbusy
- .text          0x0000000000001ec8       0xfc /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(led.o)
-                0x0000000000001ec8                led_init
-                0x0000000000001eda                led_on
-                0x0000000000001ede                led_off
-                0x0000000000001ee2                led_set_blink
-                0x0000000000001f06                led_update
-                0x0000000000001fba                led_is_on
- .text          0x0000000000001fc4      0x43c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(log.o)
-                0x0000000000001fc4                log_is_data_valid
-                0x0000000000002010                log_init
-                0x000000000000219a                log_update
-                0x0000000000002206                log_update_noisr
-                0x000000000000226a                log_add_record
-                0x000000000000230c                log_clear
-                0x0000000000002346                log_get_num_entries
-                0x0000000000002378                log_get_record
- .text          0x0000000000002400      0x1be /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
-                0x0000000000002400                ntp_sync_network_time
- .text          0x00000000000025be      0x5d8 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
-                0x00000000000025be                rtc_init
-                0x00000000000025c2                rtc_get_date
-                0x00000000000025c6                rtc_set_date
-                0x00000000000025da                is_leapyear
-                0x000000000000260e                rtc_set_by_datestr
-                0x00000000000028d8                get_month
-                0x0000000000002968                rtc_num2datestr
-                0x0000000000002b6e                rtc_get_date_string
- .text          0x0000000000002b96       0xea /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(signature.o)
-                0x0000000000002b96                signature_set
-                0x0000000000002c5e                check_for_test_start
- .text          0x0000000000002c80      0xb78 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(socket.o)
-                0x0000000000002c80                udpsocket_open_multicast
-                0x0000000000002d06                udpsocket_is_open
-                0x0000000000002d16                socket_is_active
-                0x0000000000002d32                socket_is_listening
-                0x0000000000002d42                socket_is_established
-                0x0000000000002d52                socket_is_closed
-                0x0000000000002d60                udpsocket_is_closed
-                0x0000000000002d64                socket_close
-                0x0000000000002dca                udpsocket_open
-                0x0000000000002dd2                socket_open
-                0x0000000000002dda                udpsocket_close
-                0x0000000000002dde                socket_listen
-                0x0000000000002dfc                socket_connect
-                0x0000000000002e64                socket_disconnect
-                0x0000000000002e6a                socket_send
-                0x0000000000002ef6                socket_recv
-                0x0000000000002f6a                socket_recv_available
-                0x0000000000002f6e                udpsocket_recv_available
-                0x0000000000002f72                socket_peek
-                0x0000000000002f82                udpsocket_sendto
-                0x0000000000003026                udpsocket_recv_data
-                0x0000000000003068                udpsocket_recvfrom
-                0x00000000000031ba                socket_igmpsend
-                0x0000000000003218                udpsocket_add_to_datagram
-                0x000000000000325e                socket_writestr
-                0x000000000000327e                socket_writechar
-                0x00000000000032a0                socket_writequotedstring
-                0x00000000000032c6                socket_writedate
-                0x00000000000032e0                socket_writehex8
-                0x000000000000331c                socket_write_macaddress
-                0x000000000000336e                socket_writehex16
-                0x0000000000003388                socket_writedec32
-                0x00000000000034ae                udpsocket_start_datagram
-                0x00000000000034f8                udpsocket_send_datagram
-                0x0000000000003534                socket_received_line
-                0x0000000000003590                socket_is_blank_line
-                0x00000000000035d4                socket_recv_compare
-                0x0000000000003680                socket_flush_line
-                0x0000000000003712                socket_recv_int
- .text          0x00000000000037f8       0x5c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(spi.o)
-                0x00000000000037f8                spi_init
-                0x000000000000381c                spi_is_locked
-                0x0000000000003822                spi_begin_transfer
-                0x000000000000383e                spi_transfer
-                0x000000000000384c                spi_end_transfer
- .text          0x0000000000003854      0x144 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(str.o)
-                0x0000000000003854                mem_cpy
-                0x000000000000386c                mem_set
-                0x0000000000003880                mem_cmp
-                0x00000000000038ae                str_cpy
-                0x00000000000038c2                str_len
-                0x00000000000038d4                str_writeudec16
- .text          0x0000000000003998       0x6e /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(temp.o)
-                0x0000000000003998                temp_init
-                0x00000000000039a6                temp_is_data_ready
-                0x00000000000039bc                temp_start
-                0x00000000000039c8                temp_get
- .text          0x0000000000003a06      0x170 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
-                0x0000000000003a06                tempfsm_init
-                0x0000000000003a08                tempfsm_update
-                0x0000000000003b6c                tempfsm_reset
- .text          0x0000000000003b76       0x9a /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(timer1.o)
-                0x0000000000003b76                __vector_11
-                0x0000000000003bc0                timer1_init
-                0x0000000000003be0                timer1_get
-                0x0000000000003bf8                timer1_clear
- .text          0x0000000000003c10      0x23c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
-                0x0000000000003c10                uart_init
-                0x0000000000003c18                uart_writechar
-                0x0000000000003c1c                uart_writestr
-                0x0000000000003c34                uart_writehex8
-                0x0000000000003c66                uart_writehex16
-                0x0000000000003c78                uart_writedec32
-                0x0000000000003da0                uart_is_connected
-                0x0000000000003da4                uart_is_packet_available
-                0x0000000000003da8                uart_readpacket
-                0x0000000000003e08                uart_writeip
- .text          0x0000000000003e4c      0x214 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(util.o)
-                0x0000000000003e4c                str_cmp
-                0x0000000000003e82                update_checksum
-                0x0000000000003eaa                random_seed
-                0x0000000000003ee0                random
-                0x0000000000003fe2                strtoi
- .text          0x0000000000004060       0xc6 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
-                0x0000000000004060                vpd_is_data_valid
-                0x00000000000040a0                vpd_write_defaults
-                0x00000000000040f4                vpd_init
- .text          0x0000000000004126      0xbfe /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
-                0x0000000000004126                W5x_writebuf
-                0x000000000000422c                W5x_write
-                0x000000000000424e                W5x_config
-                0x00000000000043ea                W5x_readbuf
-                0x00000000000044f4                W5x_read
-                0x0000000000004516                W5x_readSn
-                0x0000000000004526                W5x_writeSn
-                0x000000000000453c                W5x_readbufSn
-                0x0000000000004552                W5x_writebufSn
-                0x0000000000004568                W5x_read_data
-                0x00000000000045ee                W5x_writeMR
-                0x00000000000045f8                W5x_readMR
-                0x0000000000004600                isW5100
-                0x0000000000004676                isW5500
-                0x00000000000046ec                W5x_init
-                0x00000000000046fa                W5x_writebufGAR
-                0x0000000000004708                W5x_readbufGAR
-                0x0000000000004716                W5x_writebufSUBR
-                0x0000000000004724                W5x_readbufSUBR
-                0x0000000000004732                W5x_writebufSHAR
-                0x0000000000004740                W5x_readbufSHAR
-                0x000000000000474e                W5x_writebufSIPR
-                0x000000000000475c                W5x_readbufSIPR
-                0x000000000000476a                W5x_writeIR
-                0x0000000000004774                W5x_readIR
-                0x000000000000477c                W5x_writeRTR
-                0x0000000000004796                W5x_readRTR
-                0x00000000000047c0                W5x_writebufUIPR
-                0x00000000000047ce                W5x_readbufUIPR
-                0x00000000000047dc                W5x_writeUPORT
-                0x00000000000047f6                W5x_readUPORT
-                0x0000000000004820                W5x_writeSnMR
-                0x000000000000482a                W5x_readSnMR
-                0x0000000000004832                W5x_writeSnCR
-                0x000000000000483c                W5x_readSnCR
-                0x0000000000004844                W5x_execCmdSn
-                0x000000000000485a                W5x_writeSnIR
-                0x0000000000004864                W5x_readSnIR
-                0x000000000000486c                W5x_writeSnSR
-                0x0000000000004876                W5x_readSnSR
-                0x000000000000487e                W5x_writeSnPORT
-                0x00000000000048a0                W5x_readSnPORT
-                0x00000000000048d0                W5x_writeSnDHAR
-                0x00000000000048de                W5x_readSnDHAR
-                0x00000000000048ec                W5x_writeSnDIPR
-                0x00000000000048fa                W5x_readSnDIPR
-                0x0000000000004908                W5x_writeSnDPORT
-                0x000000000000492a                W5x_readSnDPORT
-                0x000000000000495a                W5x_writeSnMSSR
-                0x000000000000497c                W5x_readSnMSSR
-                0x00000000000049ac                W5x_writeSnTX_FSR
-                0x00000000000049ce                W5x_readSnTX_FSR
-                0x00000000000049fe                W5x_getTXFreeSize
-                0x0000000000004a36                W5x_writeSnTX_RD
-                0x0000000000004a58                W5x_readSnTX_RD
-                0x0000000000004a88                W5x_writeSnTX_WR
-                0x0000000000004aaa                W5x_send_data_processing_offset
-                0x0000000000004b40                W5x_send_data_processing
-                0x0000000000004b4c                W5x_readSnTX_WR
-                0x0000000000004b7c                W5x_writeSnRX_RSR
-                0x0000000000004b9e                W5x_readSnRX_RSR
-                0x0000000000004bce                W5x_getRXReceivedSize
-                0x0000000000004c06                W5x_writeSnRX_RD
-                0x0000000000004c28                W5x_readSnRX_RD
-                0x0000000000004c58                W5x_recv_data_processing_offset
-                0x0000000000004cc2                W5x_recv_data_processing
-                0x0000000000004cd2                W5x_writeSnRX_WR
-                0x0000000000004cf4                W5x_readSnRX_WR
- .text          0x0000000000004d24       0x46 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(wdt.o)
-                0x0000000000004d24                __vector_6
-                0x0000000000004d42                wdt_init
-                0x0000000000004d5a                wdt_reset
-                0x0000000000004d5e                wdt_force_restart
- .text          0x0000000000004d6a      0x43c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
-                0x0000000000004d6a                serial_init
-                0x0000000000004d90                __vector_18
-                0x0000000000004fe0                __vector_19
-                0x0000000000005046                serial_rxchars
-                0x0000000000005054                serial_popchar
-                0x000000000000509e                serial_isconnected
-                0x00000000000050ec                serial_is_packet_ready
-                0x00000000000050f2                serial_writechar
-                0x0000000000005152                serial_writestr
-                0x000000000000517c                serial_writestr_P
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
- .text          0x00000000000051a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
-                0x00000000000051a6                . = ALIGN (0x2)
+                0x0000000000000260                http_parse_init
+                0x0000000000000278                http_parse_update
+ .text          0x0000000000000d4c      0x1b0 obj/Debug/util.o
+                0x0000000000000d4c                calc_checksum
+                0x0000000000000dce                update_tcrit_hi
+                0x0000000000000e18                update_twarn_hi
+                0x0000000000000e6a                update_twarn_lo
+                0x0000000000000ebc                update_tcrit_lo
+ .text          0x0000000000000efc      0x18c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
+                0x0000000000000efc                alarm_init
+                0x0000000000000efe                alarm_send
+ .text          0x0000000000001088       0xf0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(config.o)
+                0x0000000000001088                config_set_modified
+                0x0000000000001090                config_is_data_valid
+                0x00000000000010d0                config_write_defaults
+                0x00000000000010ea                config_init
+                0x0000000000001120                config_update
+                0x0000000000001150                config_update_noisr
+ .text          0x0000000000001178      0x19e /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(delay.o)
+                0x0000000000001178                __vector_14
+                0x000000000000121a                delay_init
+                0x000000000000123e                delay_get
+                0x000000000000125e                delay_isdone
+                0x0000000000001290                delay_set
+                0x00000000000012e4                millis
+ .text          0x0000000000001316      0xbfc /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
+                0x0000000000001316                dhcp_getLocalIp
+                0x000000000000131c                dhcp_getSubnetMask
+                0x0000000000001322                dhcp_getGatewayIp
+                0x0000000000001328                dhcp_getDhcpServerIp
+                0x000000000000132e                dhcp_getDnsServerIp
+                0x0000000000001334                _ZN9DhcpClass16reset_DHCP_leaseEv
+                0x0000000000001340                _ZN9DhcpClass12presend_DHCPEv
+                0x0000000000001342                _ZN9DhcpClass17parseDHCPResponseEmRm
+                0x0000000000001778                _ZN9DhcpClass10getLocalIpEv
+                0x000000000000177c                _ZN9DhcpClass13getSubnetMaskEv
+                0x0000000000001780                _ZN9DhcpClass12getGatewayIpEv
+                0x0000000000001784                _ZN9DhcpClass15getDhcpServerIpEv
+                0x0000000000001788                _ZN9DhcpClass14getDnsServerIpEv
+                0x000000000000178c                _ZN9DhcpClass9printByteEPch
+                0x00000000000017b6                _ZN9DhcpClass17send_DHCP_MESSAGEEhj
+                0x0000000000001a32                _ZN9DhcpClass18request_DHCP_leaseEv
+                0x0000000000001d2e                _ZN9DhcpClass13beginWithDHCPEPhmm
+                0x0000000000001dac                dhcp_start
+                0x0000000000001dd0                _ZN9DhcpClass10checkLeaseEv
+                0x0000000000001f0a                dhcp_checkLease
+ .text          0x0000000000001f12      0x12c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
+                0x0000000000001f12                eeprom_startwrite
+                0x0000000000001f18                __vector_22
+                0x0000000000001fa4                eeprom_writebuf
+                0x0000000000001fde                eeprom_writebuf_noisr
+                0x000000000000200c                eeprom_readbuf
+                0x0000000000002036                eeprom_isbusy
+ .text          0x000000000000203e       0xfc /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(led.o)
+                0x000000000000203e                led_init
+                0x0000000000002050                led_on
+                0x0000000000002054                led_off
+                0x0000000000002058                led_set_blink
+                0x000000000000207c                led_update
+                0x0000000000002130                led_is_on
+ .text          0x000000000000213a      0x43c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(log.o)
+                0x000000000000213a                log_is_data_valid
+                0x0000000000002186                log_init
+                0x0000000000002310                log_update
+                0x000000000000237c                log_update_noisr
+                0x00000000000023e0                log_add_record
+                0x0000000000002482                log_clear
+                0x00000000000024bc                log_get_num_entries
+                0x00000000000024ee                log_get_record
+ .text          0x0000000000002576      0x1be /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
+                0x0000000000002576                ntp_sync_network_time
+ .text          0x0000000000002734      0x5d8 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
+                0x0000000000002734                rtc_init
+                0x0000000000002738                rtc_get_date
+                0x000000000000273c                rtc_set_date
+                0x0000000000002750                is_leapyear
+                0x0000000000002784                rtc_set_by_datestr
+                0x0000000000002a4e                get_month
+                0x0000000000002ade                rtc_num2datestr
+                0x0000000000002ce4                rtc_get_date_string
+ .text          0x0000000000002d0c       0xea /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(signature.o)
+                0x0000000000002d0c                signature_set
+                0x0000000000002dd4                check_for_test_start
+ .text          0x0000000000002df6      0xb78 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(socket.o)
+                0x0000000000002df6                udpsocket_open_multicast
+                0x0000000000002e7c                udpsocket_is_open
+                0x0000000000002e8c                socket_is_active
+                0x0000000000002ea8                socket_is_listening
+                0x0000000000002eb8                socket_is_established
+                0x0000000000002ec8                socket_is_closed
+                0x0000000000002ed6                udpsocket_is_closed
+                0x0000000000002eda                socket_close
+                0x0000000000002f40                udpsocket_open
+                0x0000000000002f48                socket_open
+                0x0000000000002f50                udpsocket_close
+                0x0000000000002f54                socket_listen
+                0x0000000000002f72                socket_connect
+                0x0000000000002fda                socket_disconnect
+                0x0000000000002fe0                socket_send
+                0x000000000000306c                socket_recv
+                0x00000000000030e0                socket_recv_available
+                0x00000000000030e4                udpsocket_recv_available
+                0x00000000000030e8                socket_peek
+                0x00000000000030f8                udpsocket_sendto
+                0x000000000000319c                udpsocket_recv_data
+                0x00000000000031de                udpsocket_recvfrom
+                0x0000000000003330                socket_igmpsend
+                0x000000000000338e                udpsocket_add_to_datagram
+                0x00000000000033d4                socket_writestr
+                0x00000000000033f4                socket_writechar
+                0x0000000000003416                socket_writequotedstring
+                0x000000000000343c                socket_writedate
+                0x0000000000003456                socket_writehex8
+                0x0000000000003492                socket_write_macaddress
+                0x00000000000034e4                socket_writehex16
+                0x00000000000034fe                socket_writedec32
+                0x0000000000003624                udpsocket_start_datagram
+                0x000000000000366e                udpsocket_send_datagram
+                0x00000000000036aa                socket_received_line
+                0x0000000000003706                socket_is_blank_line
+                0x000000000000374a                socket_recv_compare
+                0x00000000000037f6                socket_flush_line
+                0x0000000000003888                socket_recv_int
+ .text          0x000000000000396e       0x5c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(spi.o)
+                0x000000000000396e                spi_init
+                0x0000000000003992                spi_is_locked
+                0x0000000000003998                spi_begin_transfer
+                0x00000000000039b4                spi_transfer
+                0x00000000000039c2                spi_end_transfer
+ .text          0x00000000000039ca      0x144 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(str.o)
+                0x00000000000039ca                mem_cpy
+                0x00000000000039e2                mem_set
+                0x00000000000039f6                mem_cmp
+                0x0000000000003a24                str_cpy
+                0x0000000000003a38                str_len
+                0x0000000000003a4a                str_writeudec16
+ .text          0x0000000000003b0e       0x6e /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(temp.o)
+                0x0000000000003b0e                temp_init
+                0x0000000000003b1c                temp_is_data_ready
+                0x0000000000003b32                temp_start
+                0x0000000000003b3e                temp_get
+ .text          0x0000000000003b7c      0x170 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
+                0x0000000000003b7c                tempfsm_init
+                0x0000000000003b7e                tempfsm_update
+                0x0000000000003ce2                tempfsm_reset
+ .text          0x0000000000003cec       0x9a /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(timer1.o)
+                0x0000000000003cec                __vector_11
+                0x0000000000003d36                timer1_init
+                0x0000000000003d56                timer1_get
+                0x0000000000003d6e                timer1_clear
+ .text          0x0000000000003d86      0x23c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
+                0x0000000000003d86                uart_init
+                0x0000000000003d8e                uart_writechar
+                0x0000000000003d92                uart_writestr
+                0x0000000000003daa                uart_writehex8
+                0x0000000000003ddc                uart_writehex16
+                0x0000000000003dee                uart_writedec32
+                0x0000000000003f16                uart_is_connected
+                0x0000000000003f1a                uart_is_packet_available
+                0x0000000000003f1e                uart_readpacket
+                0x0000000000003f7e                uart_writeip
+ .text          0x0000000000003fc2      0x214 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(util.o)
+                0x0000000000003fc2                str_cmp
+                0x0000000000003ff8                update_checksum
+                0x0000000000004020                random_seed
+                0x0000000000004056                random
+                0x0000000000004158                strtoi
+ .text          0x00000000000041d6       0xc6 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
+                0x00000000000041d6                vpd_is_data_valid
+                0x0000000000004216                vpd_write_defaults
+                0x000000000000426a                vpd_init
+ .text          0x000000000000429c      0xbfe /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
+                0x000000000000429c                W5x_writebuf
+                0x00000000000043a2                W5x_write
+                0x00000000000043c4                W5x_config
+                0x0000000000004560                W5x_readbuf
+                0x000000000000466a                W5x_read
+                0x000000000000468c                W5x_readSn
+                0x000000000000469c                W5x_writeSn
+                0x00000000000046b2                W5x_readbufSn
+                0x00000000000046c8                W5x_writebufSn
+                0x00000000000046de                W5x_read_data
+                0x0000000000004764                W5x_writeMR
+                0x000000000000476e                W5x_readMR
+                0x0000000000004776                isW5100
+                0x00000000000047ec                isW5500
+                0x0000000000004862                W5x_init
+                0x0000000000004870                W5x_writebufGAR
+                0x000000000000487e                W5x_readbufGAR
+                0x000000000000488c                W5x_writebufSUBR
+                0x000000000000489a                W5x_readbufSUBR
+                0x00000000000048a8                W5x_writebufSHAR
+                0x00000000000048b6                W5x_readbufSHAR
+                0x00000000000048c4                W5x_writebufSIPR
+                0x00000000000048d2                W5x_readbufSIPR
+                0x00000000000048e0                W5x_writeIR
+                0x00000000000048ea                W5x_readIR
+                0x00000000000048f2                W5x_writeRTR
+                0x000000000000490c                W5x_readRTR
+                0x0000000000004936                W5x_writebufUIPR
+                0x0000000000004944                W5x_readbufUIPR
+                0x0000000000004952                W5x_writeUPORT
+                0x000000000000496c                W5x_readUPORT
+                0x0000000000004996                W5x_writeSnMR
+                0x00000000000049a0                W5x_readSnMR
+                0x00000000000049a8                W5x_writeSnCR
+                0x00000000000049b2                W5x_readSnCR
+                0x00000000000049ba                W5x_execCmdSn
+                0x00000000000049d0                W5x_writeSnIR
+                0x00000000000049da                W5x_readSnIR
+                0x00000000000049e2                W5x_writeSnSR
+                0x00000000000049ec                W5x_readSnSR
+                0x00000000000049f4                W5x_writeSnPORT
+                0x0000000000004a16                W5x_readSnPORT
+                0x0000000000004a46                W5x_writeSnDHAR
+                0x0000000000004a54                W5x_readSnDHAR
+                0x0000000000004a62                W5x_writeSnDIPR
+                0x0000000000004a70                W5x_readSnDIPR
+                0x0000000000004a7e                W5x_writeSnDPORT
+                0x0000000000004aa0                W5x_readSnDPORT
+                0x0000000000004ad0                W5x_writeSnMSSR
+                0x0000000000004af2                W5x_readSnMSSR
+                0x0000000000004b22                W5x_writeSnTX_FSR
+                0x0000000000004b44                W5x_readSnTX_FSR
+                0x0000000000004b74                W5x_getTXFreeSize
+                0x0000000000004bac                W5x_writeSnTX_RD
+                0x0000000000004bce                W5x_readSnTX_RD
+                0x0000000000004bfe                W5x_writeSnTX_WR
+                0x0000000000004c20                W5x_send_data_processing_offset
+                0x0000000000004cb6                W5x_send_data_processing
+                0x0000000000004cc2                W5x_readSnTX_WR
+                0x0000000000004cf2                W5x_writeSnRX_RSR
+                0x0000000000004d14                W5x_readSnRX_RSR
+                0x0000000000004d44                W5x_getRXReceivedSize
+                0x0000000000004d7c                W5x_writeSnRX_RD
+                0x0000000000004d9e                W5x_readSnRX_RD
+                0x0000000000004dce                W5x_recv_data_processing_offset
+                0x0000000000004e38                W5x_recv_data_processing
+                0x0000000000004e48                W5x_writeSnRX_WR
+                0x0000000000004e6a                W5x_readSnRX_WR
+ .text          0x0000000000004e9a       0x46 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(wdt.o)
+                0x0000000000004e9a                __vector_6
+                0x0000000000004eb8                wdt_init
+                0x0000000000004ed0                wdt_reset
+                0x0000000000004ed4                wdt_force_restart
+ .text          0x0000000000004ee0      0x43c /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
+                0x0000000000004ee0                serial_init
+                0x0000000000004f06                __vector_18
+                0x0000000000005156                __vector_19
+                0x00000000000051bc                serial_rxchars
+                0x00000000000051ca                serial_popchar
+                0x0000000000005214                serial_isconnected
+                0x0000000000005262                serial_is_packet_ready
+                0x0000000000005268                serial_writechar
+                0x00000000000052c8                serial_writestr
+                0x00000000000052f2                serial_writestr_P
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+ .text          0x000000000000531c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x000000000000531c                . = ALIGN (0x2)
  *(.text.*)
  .text.libgcc.mul
-                0x00000000000051a6       0x20 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
-                0x00000000000051a6                __mulsi3
+                0x000000000000531c       0x20 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+                0x000000000000531c                __mulsi3
  .text.libgcc.div
-                0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
- .text.libgcc   0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+                0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc   0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
  .text.libgcc.prologue
-                0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+                0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
  .text.libgcc.builtins
-                0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+                0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
  .text.libgcc.fmul
-                0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+                0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
  .text.libgcc.fixed
-                0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+                0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
  .text.libgcc.mul
-                0x00000000000051c6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x000000000000533c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
  .text.libgcc.div
-                0x00000000000051c6       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
-                0x00000000000051c6                __udivmodhi4
- .text.libgcc   0x00000000000051ee        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x000000000000533c       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x000000000000533c                __udivmodhi4
+ .text.libgcc   0x0000000000005364        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
  .text.libgcc.prologue
-                0x00000000000051ee        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000005364        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
  .text.libgcc.builtins
-                0x00000000000051ee        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000005364        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
  .text.libgcc.fmul
-                0x00000000000051ee        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000005364        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
  .text.libgcc.fixed
-                0x00000000000051ee        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000005364        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
  .text.libgcc.mul
-                0x00000000000051ee        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x0000000000005364        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
  .text.libgcc.div
-                0x00000000000051ee       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
-                0x00000000000051ee                __divmodhi4
-                0x00000000000051ee                _div
- .text.libgcc   0x0000000000005216        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x0000000000005364       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x0000000000005364                __divmodhi4
+                0x0000000000005364                _div
+ .text.libgcc   0x000000000000538c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
  .text.libgcc.prologue
-                0x0000000000005216        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x000000000000538c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
  .text.libgcc.builtins
-                0x0000000000005216        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x000000000000538c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
  .text.libgcc.fmul
-                0x0000000000005216        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x000000000000538c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
  .text.libgcc.fixed
-                0x0000000000005216        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x000000000000538c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
  .text.libgcc.mul
-                0x0000000000005216        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x000000000000538c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.div
-                0x0000000000005216       0x44 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
-                0x0000000000005216                __udivmodsi4
- .text.libgcc   0x000000000000525a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x000000000000538c       0x44 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x000000000000538c                __udivmodsi4
+ .text.libgcc   0x00000000000053d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
-                0x000000000000525a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000053d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.builtins
-                0x000000000000525a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000053d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.fmul
-                0x000000000000525a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000053d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.fixed
-                0x000000000000525a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000053d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.mul
-                0x000000000000525a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.div
-                0x000000000000525a       0x2e /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
-                0x000000000000525a                __divmodsi4
- .text.libgcc   0x0000000000005288        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053d0       0x2e /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053d0                __divmodsi4
+ .text.libgcc   0x00000000000053fe        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.prologue
-                0x0000000000005288        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053fe        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.builtins
-                0x0000000000005288        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053fe        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.fmul
-                0x0000000000005288        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053fe        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.fixed
-                0x0000000000005288        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000053fe        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.mul
-                0x0000000000005288        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000053fe        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.div
-                0x0000000000005288       0x10 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
-                0x0000000000005288                __negsi2
- .text.libgcc   0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000053fe       0x10 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000053fe                __negsi2
+ .text.libgcc   0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.prologue
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.builtins
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.fmul
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.fixed
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.mul
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.div
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .text.libgcc   0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
  .text.libgcc.div
-                0x0000000000005298        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
- .text.libgcc   0x0000000000005298        0xc /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
-                0x0000000000005298                __tablejump2__
+                0x000000000000540e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc   0x000000000000540e        0xc /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x000000000000540e                __tablejump2__
  .text.libgcc.prologue
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
  .text.libgcc.builtins
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
  .text.libgcc.fmul
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
  .text.libgcc.fixed
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
  .text.libgcc.mul
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.mul
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
  .text.libgcc.div
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
- .text.libgcc   0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+ .text.libgcc   0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
  .text.libgcc.prologue
-                0x00000000000052a4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+                0x000000000000541a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
  .text.libgcc.builtins
-                0x00000000000052a4        0xe /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
-                0x00000000000052a4                __bswapsi2
+                0x000000000000541a        0xe /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+                0x000000000000541a                __bswapsi2
  .text.libgcc.fmul
-                0x00000000000052b2        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+                0x0000000000005428        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
  .text.libgcc.fixed
-                0x00000000000052b2        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+                0x0000000000005428        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
  .text.libgcc.mul
-                0x00000000000052b2       0x1e /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
-                0x00000000000052b2                __umulhisi3
+                0x0000000000005428       0x1e /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005428                __umulhisi3
  .text.libgcc.div
-                0x00000000000052d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
- .text.libgcc   0x00000000000052d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005446        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x0000000000005446        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
  .text.libgcc.prologue
-                0x00000000000052d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005446        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
  .text.libgcc.builtins
-                0x00000000000052d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005446        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
  .text.libgcc.fmul
-                0x00000000000052d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005446        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
  .text.libgcc.fixed
-                0x00000000000052d0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005446        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
  .text.libgcc.mul
-                0x00000000000052d0       0x16 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
-                0x00000000000052d0                __muluhisi3
+                0x0000000000005446       0x16 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x0000000000005446                __muluhisi3
  .text.libgcc.div
-                0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
- .text.libgcc   0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc   0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
  .text.libgcc.prologue
-                0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
  .text.libgcc.builtins
-                0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
  .text.libgcc.fmul
-                0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
  .text.libgcc.fixed
-                0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
-                0x00000000000052e6                . = ALIGN (0x2)
+                0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+                0x000000000000545c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000052e6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
-                0x00000000000052e6                exit
-                0x00000000000052e6                _exit
+ .fini9         0x000000000000545c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000545c                exit
+                0x000000000000545c                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -775,18 +777,18 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000052e6        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .fini0         0x000000000000545c        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000052ea                _etext = .
+                0x0000000000005460                _etext = .
 
-.siminfo        0x00000000000052ea       0x28
- .siminfo       0x00000000000052ea       0x28 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
-                0x00000000000052ea                siminfo_serial_out
-                0x00000000000052f5                siminfo_serial_in
-                0x0000000000005300                siminfo_cpufrequency
-                0x0000000000005306                siminfo_device
+.siminfo        0x0000000000005460       0x28
+ .siminfo       0x0000000000005460       0x28 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
+                0x0000000000005460                siminfo_serial_out
+                0x000000000000546b                siminfo_serial_in
+                0x0000000000005476                siminfo_cpufrequency
+                0x000000000000547c                siminfo_device
 
-.data           0x0000000000800100      0x43a load address 0x0000000000005312
+.data           0x0000000000800100      0x42e load address 0x0000000000005488
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega328p.o
@@ -830,115 +832,117 @@ END GROUP
  .data          0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
  *(.data*)
  *(.rodata)
- .rodata        0x0000000000800130      0x32f obj/Debug/main.o
- .rodata        0x000000000080045f        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
- .rodata        0x0000000000800463        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
- .rodata        0x0000000000800467        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
- .rodata        0x000000000080046b        0xc /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
- .rodata        0x0000000000800477        0x6 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(socket.o)
- .rodata        0x000000000080047d       0x37 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
- .rodata        0x00000000008004b4       0x10 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
+ .rodata        0x0000000000800130      0x323 obj/Debug/main.o
+ .rodata        0x0000000000800453        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
+ .rodata        0x0000000000800457        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
+ .rodata        0x000000000080045b        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
+ .rodata        0x000000000080045f        0xc /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
+ .rodata        0x000000000080046b        0x6 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(socket.o)
+ .rodata        0x0000000000800471       0x37 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
+ .rodata        0x00000000008004a8       0x10 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
  *(.rodata*)
  .rodata.str1.1
-                0x00000000008004c4        0xa /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
+                0x00000000008004b8        0xa /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
                                           0xf (size before relaxing)
  .rodata.str1.1
-                0x00000000008004ce        0x7 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
+                0x00000000008004c2        0x7 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
  .rodata.str1.1
-                0x00000000008004d5       0x13 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
+                0x00000000008004c9       0x13 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
  .rodata.str1.1
-                0x00000000008004e8       0x14 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
+                0x00000000008004dc       0x14 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
  .rodata.str1.1
-                0x00000000008004fc       0x3a /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(signature.o)
+                0x00000000008004f0       0x3a /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(signature.o)
  .rodata.str1.1
-                0x0000000000800536        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
+                0x000000000080052a        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
                                           0x6 (size before relaxing)
  .rodata.str1.1
-                0x000000000080053a        0x3 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
+                0x000000000080052e        0x3 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
  *(.gnu.linkonce.d*)
-                0x000000000080053e                . = ALIGN (0x2)
-                0x000000000080053e                _edata = .
-                0x000000000080053e                PROVIDE (__data_end, .)
+                0x0000000000800532                . = ALIGN (0x2)
+                0x0000000000800532                _edata = .
+                0x0000000000800532                PROVIDE (__data_end, .)
 
-.bss            0x000000000080053a      0x2d1
-                0x000000000080053a                PROVIDE (__bss_start, .)
+.bss            0x000000000080052e      0x2d7
+                0x000000000080052e                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x000000000080053a        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega328p.o
- .bss           0x000000000080053a        0x0 obj/Debug/main.o
- .bss           0x000000000080053a        0x0 obj/Debug/util.o
- .bss           0x000000000080053a        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
- .bss           0x000000000080053a        0x1 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(config.o)
- .bss           0x000000000080053b        0xe /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(delay.o)
- .bss           0x0000000000800549       0x43 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
- .bss           0x000000000080058c        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
- .bss           0x000000000080058c        0x5 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(led.o)
- .bss           0x0000000000800591       0x83 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(log.o)
- .bss           0x0000000000800614        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
- .bss           0x0000000000800614        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
- .bss           0x0000000000800614        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(signature.o)
- .bss           0x0000000000800614        0x2 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(socket.o)
- .bss           0x0000000000800616        0x1 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(spi.o)
- .bss           0x0000000000800617        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(str.o)
- .bss           0x0000000000800617        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(temp.o)
- .bss           0x0000000000800617        0x2 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
- .bss           0x0000000000800619        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(timer1.o)
- .bss           0x000000000080061d        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
- .bss           0x000000000080061d        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(util.o)
- .bss           0x000000000080061d        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
- .bss           0x000000000080061d        0x1 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
- .bss           0x000000000080061e        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(wdt.o)
- .bss           0x000000000080061e        0x7 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
-                0x000000000080061e                txtail
-                0x000000000080061f                txhead
-                0x0000000000800620                rxtail
-                0x0000000000800621                rxhead
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
- .bss           0x0000000000800625        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
+ .bss           0x000000000080052e        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega328p.o
+ .bss           0x000000000080052e        0x0 obj/Debug/main.o
+ .bss           0x000000000080052e        0x0 obj/Debug/util.o
+ .bss           0x000000000080052e        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(alarm.o)
+ .bss           0x000000000080052e        0x1 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(config.o)
+ .bss           0x000000000080052f        0xe /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(delay.o)
+ .bss           0x000000000080053d       0x43 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
+ .bss           0x0000000000800580        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
+ .bss           0x0000000000800580        0x5 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(led.o)
+ .bss           0x0000000000800585       0x83 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(log.o)
+ .bss           0x0000000000800608        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)
+ .bss           0x0000000000800608        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
+ .bss           0x0000000000800608        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(signature.o)
+ .bss           0x0000000000800608        0x2 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(socket.o)
+ .bss           0x000000000080060a        0x1 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(spi.o)
+ .bss           0x000000000080060b        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(str.o)
+ .bss           0x000000000080060b        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(temp.o)
+ .bss           0x000000000080060b        0x2 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
+ .bss           0x000000000080060d        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(timer1.o)
+ .bss           0x0000000000800611        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(uart.o)
+ .bss           0x0000000000800611        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(util.o)
+ .bss           0x0000000000800611        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
+ .bss           0x0000000000800611        0x1 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
+ .bss           0x0000000000800612        0x0 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(wdt.o)
+ .bss           0x0000000000800612        0x7 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
+                0x0000000000800612                txtail
+                0x0000000000800613                txhead
+                0x0000000000800614                rxtail
+                0x0000000000800615                rxhead
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_mulsi3.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_bswapsi2.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_umulhisi3.o)
+ .bss           0x0000000000800619        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_muluhisi3.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x0000000000800625       0xd4 obj/Debug/main.o
-                0x0000000000800625                resMode
-                0x0000000000800627                changeVal
-                0x0000000000800629                changeMode
-                0x000000000080062b                parse_state
-                0x000000000080062d                resetMode
-                0x000000000080062f                reqMode
-                0x0000000000800631                buf
- COMMON         0x00000000008006f9       0x12 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(config.o)
-                0x00000000008006f9                config
- COMMON         0x000000000080070b       0x45 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
-                0x000000000080070b                write_busy
-                0x000000000080070c                writeaddr
-                0x000000000080070e                writesize
-                0x000000000080070f                writebuf
-                0x000000000080074f                bufidx
- COMMON         0x0000000000800750        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
-                0x0000000000800750                rtc_base
- COMMON         0x0000000000800754       0x37 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
-                0x0000000000800754                vpd
- COMMON         0x000000000080078b       0x80 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
-                0x000000000080078b                rxbuf
-                0x00000000008007cb                txbuf
-                0x000000000080080b                PROVIDE (__bss_end, .)
-                0x0000000000005312                __data_load_start = LOADADDR (.data)
-                0x000000000000574c                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000800619       0xda obj/Debug/main.o
+                0x0000000000800619                message_ip
+                0x000000000080061d                resMode
+                0x000000000080061f                changeVal
+                0x0000000000800621                local_ip
+                0x0000000000800623                changeMode
+                0x0000000000800625                parse_state
+                0x0000000000800627                resetMode
+                0x0000000000800629                reqMode
+                0x000000000080062b                buf
+ COMMON         0x00000000008006f3       0x12 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(config.o)
+                0x00000000008006f3                config
+ COMMON         0x0000000000800705       0x45 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(eeprom.o)
+                0x0000000000800705                write_busy
+                0x0000000000800706                writeaddr
+                0x0000000000800708                writesize
+                0x0000000000800709                writebuf
+                0x0000000000800749                bufidx
+ COMMON         0x000000000080074a        0x4 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(rtc.o)
+                0x000000000080074a                rtc_base
+ COMMON         0x000000000080074e       0x37 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(vpd.o)
+                0x000000000080074e                vpd
+ COMMON         0x0000000000800785       0x80 /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(serial.o)
+                0x0000000000800785                rxbuf
+                0x00000000008007c5                txbuf
+                0x0000000000800805                PROVIDE (__bss_end, .)
+                0x0000000000005488                __data_load_start = LOADADDR (.data)
+                0x00000000000058b6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x000000000080080b        0x0
+.noinit         0x0000000000800805        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x000000000080080b                _end = .
+                0x0000000000800805                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -960,15 +964,15 @@ END GROUP
 .user_signatures
  *(.user_signatures*)
 
-.stab           0x0000000000000000     0x1848
+.stab           0x0000000000000000     0x1a1c
  *(.stab)
- .stab          0x0000000000000000     0x11e8 obj/Debug/main.o
- .stab          0x00000000000011e8      0x660 obj/Debug/util.o
+ .stab          0x0000000000000000     0x13bc obj/Debug/main.o
+ .stab          0x00000000000013bc      0x660 obj/Debug/util.o
                                         0x66c (size before relaxing)
 
-.stabstr        0x0000000000000000      0xfbd
+.stabstr        0x0000000000000000      0xfe9
  *(.stabstr)
- .stabstr       0x0000000000000000      0xfbd obj/Debug/main.o
+ .stabstr       0x0000000000000000      0xfe9 obj/Debug/main.o
 
 .stab.excl
  *(.stab.excl)
@@ -1374,6 +1378,7 @@ led_set_blink                                     /home/sohamchakraborty/Desktop
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
 led_update                                        /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(led.o)
                                                   obj/Debug/main.o
+local_ip                                          obj/Debug/main.o
 log_add_record                                    /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(log.o)
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(wdt.o)
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(tempfsm.o)
@@ -1400,6 +1405,7 @@ mem_cpy                                           /home/sohamchakraborty/Desktop
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
 mem_set                                           /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(str.o)
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(Dhcp.o)
+message_ip                                        obj/Debug/main.o
 millis                                            /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(delay.o)
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(w5x00.o)
                                                   /home/sohamchakraborty/Desktop/Project 4/lib_projd.a(ntp.o)

@@ -82,6 +82,9 @@ void http_parse_update();
 
 unsigned char buf[200];
 
+unsigned char* local_ip;
+unsigned char message_ip[4];
+
 int main(void)
 {
 	/* Initialize the hardware devices
@@ -121,7 +124,8 @@ int main(void)
 
     /* loop until a dhcp address has been gotten */
     while (!dhcp_start(vpd.mac_address, 60000UL, 4000UL)) {}
-    uart_writestr("local ip: ");uart_writeip(dhcp_getLocalIp());
+    local_ip = dhcp_getLocalIp();
+    uart_writestr("local ip: ");uart_writeip(local_ip);
 
     /* configure the MAC, TCP, subnet and gateway addresses for the Ethernet controller*/
     W5x_config(vpd.mac_address, dhcp_getLocalIp(), dhcp_getGatewayIp(), dhcp_getSubnetMask());
@@ -231,7 +235,7 @@ void http_parse_update()
     {
     case REQ_LINE:
 
-        uart_writestr("In request line section...\r\n");
+        //uart_writestr("In request line section...\r\n");
 
         if(socket_recv_compare(SERVER_SOCKET, "GET "))
         {
@@ -360,17 +364,53 @@ void http_parse_update()
             }
         }
 
-
-
-
-        //Check proper IP addresses and port
-        if(!socket_recv_compare(SERVER_SOCKET, "Host: 192.1.168.1.100:8080\r\n") && !socket_recv_compare(SERVER_SOCKET, "Host: 127.0.0.100:8080\r\n"))
+        if(!socket_recv_compare(SERVER_SOCKET, "Host: "))
         {
-            //IP address and port are not proper
-            uart_writestr("IP address not matching\r\n");
             parse_state = ERR;
             break;
         }
+
+        int num=0;
+
+        //parse ip address and store in local ip
+
+        for(int i=0;i<4;i++)
+        {
+            if(!socket_recv_int(SERVER_SOCKET, &num))
+            {
+                parse_state = ERR;
+                break;
+            }
+
+            message_ip[i] = num;
+
+            if(!socket_recv_compare(SERVER_SOCKET, "."))
+            {
+                parse_state = ERR;
+                break;
+            }
+
+            if(message_ip[i] != local_ip[i])
+            {
+                uart_writestr("IP address not matching \r\n");
+                parse_state = ERR;
+                break;
+            }
+        }
+
+        socket_flush_line(SERVER_SOCKET);
+
+        //match ip addresses
+
+
+        /*
+        if(!socket_recv_compare(SERVER_SOCKET, "Host: 192..100:8080\r\n") && !socket_recv_compare(SERVER_SOCKET, "Host: 127.0.0.100:8080\r\n"))
+        {
+            //IP address and port are not proper
+            uart_writestr("IP address not matching\r\n");
+
+        }
+        */
 
         //socket_flush_line(SERVER_SOCKET);
 
@@ -387,7 +427,7 @@ void http_parse_update()
             socket_flush_line(SERVER_SOCKET);
 
             //Move to body section
-            uart_writestr("Moving to process section...\r\n");
+            //uart_writestr("Moving to process section...\r\n");
             parse_state = PROCESS;
             break;
         }
@@ -410,7 +450,7 @@ void http_parse_update()
 
             //Move to process
             parse_state = PROCESS;
-            uart_writestr("Moving to process section...\r\n");
+            //uart_writestr("Moving to process section...\r\n");
             break;
         }
         else
@@ -426,7 +466,7 @@ void http_parse_update()
 
     case ERR:
 
-        uart_writestr("In error state\r\n");
+        //uart_writestr("In error state\r\n");
 
         //Send out error http
         socket_writestr(SERVER_SOCKET, "HTTP/1.1 400 INVALID\r\n");
@@ -436,7 +476,7 @@ void http_parse_update()
         //Close socket
         socket_disconnect(SERVER_SOCKET);
 
-        uart_writestr("In request line section...\r\n");
+        //uart_writestr("In request line section...\r\n");
         parse_state = REQ_LINE;
         break;
 
@@ -444,14 +484,14 @@ void http_parse_update()
 
         //Need to process and send apt response
 
-        uart_writestr("Started executing process...\r\n");
+        //uart_writestr("Started executing process...\r\n");
 
         //Check request mode
         if(reqMode==0)
         {
             //Write out the device info as a JSON format
 
-            uart_writestr("Started sending response...\r\n");
+            //uart_writestr("Started sending response...\r\n");
 
             socket_writestr(SERVER_SOCKET, "HTTP/1.1 200 OK\r\n");
             socket_writestr(SERVER_SOCKET, "Content-Type: application/vnd.api+json\r\n");
@@ -524,7 +564,12 @@ void http_parse_update()
 
             socket_writequotedstring(SERVER_SOCKET, "state");
             socket_writechar(SERVER_SOCKET, ':');
-            socket_writequotedstring(SERVER_SOCKET, "NORMAL");
+
+            if(current_temperature > config.hi_alarm)                                               socket_writequotedstring(SERVER_SOCKET, "CRIT_HI");
+            else if(current_temperature < config.lo_alarm)                                          socket_writequotedstring(SERVER_SOCKET, "CRIT_LO");
+            else if(current_temperature > config.hi_warn && current_temperature <= config.hi_alarm) socket_writequotedstring(SERVER_SOCKET, "WARN_HI");
+            else if(current_temperature < config.lo_warn && current_temperature >= config.lo_alarm) socket_writequotedstring(SERVER_SOCKET, "WARN_LO");
+            else                                                                                    socket_writequotedstring(SERVER_SOCKET, "NORMAL");
             socket_writechar(SERVER_SOCKET, ',');
 
             socket_writequotedstring(SERVER_SOCKET, "log");
@@ -562,7 +607,7 @@ void http_parse_update()
 
             socket_writestr(SERVER_SOCKET, "\r\n");
 
-            uart_writestr("Ended sending response...\r\n");
+            //uart_writestr("Ended sending response...\r\n");
 
             //Close socket
             socket_disconnect(SERVER_SOCKET);
@@ -632,6 +677,11 @@ void http_parse_update()
         else if(reqMode == 1 && resMode==0)
         {
             //reset
+
+            socket_writestr(SERVER_SOCKET, "HTTP/1.1 200 OK\r\n");
+            socket_writestr(SERVER_SOCKET, "Connection: close\r\n");
+            socket_writestr(SERVER_SOCKET, "\r\n");
+
             if(resetMode)
             {
                 //Close socket
